@@ -1,5 +1,5 @@
 'use strict';
-// pull test
+// pull test is ok
 
 let personalMovieDB = {
     count: '',
