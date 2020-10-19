@@ -1,5 +1,4 @@
 'use strict';
-// pull test is ok
 
 let personalMovieDB = {
     count: '',
@@ -31,13 +30,16 @@ let personalMovieDB = {
     },
     writeYourGenres() {
         for (let i = 0; i < 3; i++) {
-            let d = prompt(`Ваш любимый жанр № ${i+1}?`)
+            let d = prompt(`Ваш любимый жанр № ${i+1}?`).toLocaleLowerCase();
             if (d != null && d != '') {
                 personalMovieDB.genres[i] = d
             } else {
                 i--
             }
         }
+        personalMovieDB.genres.forEach(function (item, i) {
+            console.log(`Любимый жанр № ${i+1} - это ${item}`)
+        })
     },
     showMyDB() {
         if (personalMovieDB.privat == false) {
@@ -49,9 +51,15 @@ let personalMovieDB = {
         while (personalMovieDB.count == null || personalMovieDB.count == '' || isNaN(personalMovieDB.count)) {
             personalMovieDB.count = +prompt('Сколько фильмов вы посмотрели?');
         }
+    },
+    toggleVisibleMyDB() {
+        personalMovieDB.privat == false ? (personalMovieDB.privat = true) : (personalMovieDB.privat = false)
+
     }
 }
-
+console.log(personalMovieDB.privat);
+personalMovieDB.toggleVisibleMyDB();
+console.log(personalMovieDB.privat);
 personalMovieDB.start();
 personalMovieDB.personalRate();
 personalMovieDB.rememberMyFilms();
